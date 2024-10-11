@@ -1,0 +1,19 @@
+#!/bin/bash
+
+#SBATCH --partition=gpu
+#SBATCH --gpus=1
+#SBATCH --job-name=AAE_2f_stand-ae
+#SBATCH --ntasks=1
+#SBATCH --cpus-per-task=4
+#SBATCH --time=00:50:00
+#SBTACH --mem=32000M
+#SBATCH --output=AAE_standard-ae-%A.out
+#SBATCH --error=AAE_standard-ae-%A.err
+
+
+
+# Activate your environment
+source activate generative-models-env
+lambda_=1
+echo "Train standard AAE with lambda_=$lambda_ regularization enabled"
+python train.py --z_dim 2 --lambda_ $lambda_ --ae_lr 0.0001 --log_dir "AAE_logs/2f_standard/"

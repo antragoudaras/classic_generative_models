@@ -1,0 +1,14 @@
+#!/bin/bash
+
+#SBATCH --partition=gpu_a100
+#SBATCH --gpus=1
+#SBATCH --job-name=Installcode-server
+#SBATCH --ntasks=1
+#SBATCH --cpus-per-task=4
+#SBATCH --time=01:00:00
+#SBATCH --output=install-code-sevrer%A.out
+#SBATCH --error=install-code-sevrer%A.err
+
+
+source activate generative-models-env
+conda install -c conda-forge code-server

@@ -1,0 +1,16 @@
+#!/bin/bash
+
+#SBATCH --partition=gpu
+#SBATCH --gpus=1
+#SBATCH --job-name=installing_transformers_pip
+#SBATCH --ntasks=1
+#SBATCH --cpus-per-task=4
+#SBATCH --time=00:45:00
+#SBATCH --mem=32000M
+#SBATCH --output=installing_lighting_pip_%A.out
+#SBATCH --error=installing_lighting_pip_%A.err
+
+
+# activate the environment
+source activate generative-models-env
+pip install lightning
